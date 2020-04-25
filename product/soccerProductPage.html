@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../style.css" rel="stylesheet">
+    <title>INF124-Assignment1</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="content">
+                <div class="logo">
+                    <a href="../index.html"><h1>Sports Store</h1></a>
+                </div>
+            </div>
+            <div class="navbar">
+                <ul class="content">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../products.html" class="active">Products</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="content">
+                <h1>Soccer Ball</h1>
+                <table width="100%" cellspacing="20">
+                    <tbody>
+                        <tr>
+                            <td width="30%" style="text-align: center;">
+                                <img src="../assets/soccer.jpg" class="thumbnail" width="250" alt="soccer ball" />
+                            </td>
+                            <td style="display: inline-block;">
+                                <h4>Name:</h4>
+                                <p>Soccer Ball</p>
+                                <h4>Category:</h4>
+                                <p>Sports Balls</p>
+                                <h4>Price:</h4>
+                                <p id="unitPrice">$49.99</p>
+                                <select id="quantityOptions" onchange="updatePrice()">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <hr />
+                                <h4>Total Price:</h4>
+                                <span class="output">$49.99</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h1>Details</h1>
+                <div class="detail">
+                    <p>NFHS and NCAA-approved Soccer ball. <br /> <br />
+                        Standard 6-panel construction with original look and feel. Thermal bonded construction allow for a
+                        more realistic trajectory and better touch.
+                    </p><br />
+                    <ul class="detail">
+                        <li>100% polyurethane cover</li>
+                        <li>Textured surface for performance and mobility</li>
+                        <li>FIFA Quality Pro certified</li>
+                    </ul>
+                </div>
+            </div>
+          <div class="content">
+            <h1>Order Form</h1>
+              <div class="orderform">
+                <form name="contactform" id="contactform" method="post" enctype="text/plain" onsubmit="getEventValues();" action="">
+                  <div class="row">
+                    <div class="col-50">
+                      <h3>Buyer's Information</h3>
+                      <br />
+                      <label for="fname"> First Name</label>
+                      <input type="text" id="fname" name="firstname" placeholder="John" required />
+                      <label for="lname"> Last Name</label>
+                      <input type="text" id="lname" name="lastname" placeholder="White" required />
+                      <label for="email"> Email</label>
+                      <input type="text" id="email" name="email" placeholder="john@example.com" required />
+                      <label for="phone"> Phone Number</label>
+                      <input type="text" id="phone" name="phone" placeholder="123-123-1234" required />
+                      <h3>Shipping Address</h3>
+                      <br />
+
+                      <label for="adr"> Address</label>
+                      <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required />
+                      <label for="city"> City</label>
+                      <input type="text" id="city" name="city" placeholder="New York" required />
+
+                      <div class="row">
+                        <div class="col-50">
+                          <label for="state">State</label>
+                          <input type="text" id="state" name="state" placeholder="NY" required />
+                        </div>
+                        <div class="col-50">
+                          <label for="zip">Zip</label>
+                          <input type="text" id="zip" name="zip" placeholder="10001" required />
+                        </div>
+                      </div>
+                      <label for="method">Shipping method</label>
+                      <select id="method" name="method">
+                        <option>Overnight</option>
+                        <option selected>2-day expedited</option>
+                        <option>7-day ground</option>
+                      </select>
+                    </div>
+
+                    <div class="col-50">
+                      <h3>Order Details</h3>
+                      <br />
+                      <label for="quantity">Product ID</label>
+                      <input type="text" id="pid" name="productid" placeholder="123456789" required />
+                      <label for="pid">Quantity</label>
+                      <input type="text" id="quantity" name="quantity" placeholder="5" required />
+                      <h3>Payment Information</h3>
+                      <br />
+                      <label for="cname">Name on Card</label>
+                      <input type="text" id="cname" name="cardname" placeholder="John More Doe" required />
+                      <label for="ccnum">Credit card number</label>
+                      <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required />
+                      <label for="expmonth">Exp Month</label>
+                      <input type="text" id="expmonth" name="expmonth" placeholder="September" required />
+
+                      <div class="row">
+                        <div class="col-50">
+                          <label for="expyear">Exp Year</label>
+                          <input type="text" id="expyear" name="expyear" placeholder="2018" required />
+                        </div>
+                        <div class="col-50">
+                          <label for="cvv">CVV</label>
+                          <input type="text" id="cvv" name="cvv" placeholder="352" required />
+                        </div>
+                          <label>
+                            <input type="checkbox"checked="checked" name="sameadr"/>
+                            Billing address same as shipping
+                          </label >
+                          <br /><br />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" id="submitText" class="js-submit-order btn" tabindex="0" id="formSubmit">
+                    Validate Order
+                  </button>
+                </form>
+              </div>
+              <script type="text/javascript" src="../validation.js"></script>
+          </div>
+          <div class="footer">
+              <div class="content">
+                  <table width="100%" cellspacing="20">
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <h3>WHO WE ARE</h3>
+
+                                  <p>  Welcome to Sports Store!</p>
+                                      <p>
+
+                                          We are an online business currently based in
+                                          Irvine, California.
+
+
+                                      </p>
+                                      <a href="../about.html">Learn more... </a>
+
+
+                              </td>
+                              <td>
+                                      <h3>MAIN OFFICE</h3>
+                                      <p>
+                                          <address>
+                                                  40234 Sunrise Blvd,
+                                                  Irvine, California, 92811
+                                          </address>
+
+                                      </p>
+                                      <p> Tel: (949) 800 2221</p>
+                                      <p> Email: info@sportstore.com</p>
+                                      <a href="../contact.html">Learn More...</a>
+
+
+                              </td>
+                              <td>
+
+                                      <h3>QUICK LINKS</h3>
+                                      <a href="../index.html">First Page</a>
+                                      <a href="../products.html">What We Offer</a>
+                                      <a href="../order.html">Order Now</a>
+                                      <a href="../about.html">Who We Are</a>
+                                      <a href="../contact.html">Get In Touch</a>
+
+                              </td>
+                              <td>
+                                      <h3>FOLLOW US</h3>
+                                      <a href="#">Facebook</a>
+                                      <a href="#">Instagram</a>
+                                      <a href="#">Twitter</a>
+                                      <a href="#">LinkedIn</a>
+                                      <a href="#">Pinterest</a>
+                              </td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+              </div>
+              <p class="copyright">
+                  Copyright &copy; 2020 Sports Store - All Rights Reserved
+              </p>
+          </div>
+    </div>
+    <script type="text/javascript" src="../main.js"></script>
+</body>
+</html>
