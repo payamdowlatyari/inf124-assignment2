@@ -33,7 +33,7 @@
                     '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
 
     $pdo->exec($sql);
-    header("refresh:0.5; url=../product/basketball.html");
+    header("refresh:0.5; url=../product/orderConfirmation.html");
     // url must go back to product page
     // alternatively, show order confirmation, then go back to home page
 ?>
