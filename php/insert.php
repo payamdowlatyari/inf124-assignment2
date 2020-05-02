@@ -25,11 +25,11 @@
         $sameadr = 0;
 
     $sql = "INSERT INTO orders (
-                firstname, lastname, email, phone, address, 
-                city, state, zip, method, productid, quantity, 
+                firstname, lastname, email, phone, address,
+                city, state, zip, method, productid, quantity,
                 cardname, cardnumber, expmonth, expyear, cvv)
-            VALUES ('$firstname', '$lastname', '$email', '$phone', '$address', 
-                    '$city', '$state', '$zip', '$method', '$productid', '$quantity', 
+            VALUES ('$firstname', '$lastname', '$email', '$phone', '$address',
+                    '$city', '$state', '$zip', '$method', '$productid', '$quantity',
                     '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
 
     $pdo->exec($sql);

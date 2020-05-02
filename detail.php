@@ -26,20 +26,20 @@
         </div>
         <div class="main">
             <div class="content">
-                <h1>Golf Balls</h1>
+                <h1>Basketball</h1>
                 <table width="100%" cellspacing="20">
                     <tbody>
                         <tr>
                             <td width="30%" style="text-align: center;">
-                                <img src="../assets/goldBall.jpg" class="thumbnail" width="250" alt="golf balls" />
+                                <img src="../assets/baseketball.jpg" class="thumbnail" width="250" alt="basketball" />
                             </td>
                             <td style="display: inline-block;">
                                 <h4>Name:</h4>
-                                <p>Golf Balls</p>
+                                <p>Basketball</p>
                                 <h4>Category:</h4>
                                 <p>Sports Balls</p>
                                 <h4>Price:</h4>
-                                <p id="unitPrice">$39.99</p>
+                                <p id="unitPrice">$23.99</p>
                                 <select id="quantityOptions" onchange="updatePrice()">
                                     <option>1</option>
                                     <option>2</option>
@@ -49,30 +49,29 @@
                                 </select>
                                 <hr />
                                 <h4>Total Price:</h4>
-                                <span class="output">$39.99</span>
+                                <span class="output">$23.99</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <h1>Details</h1>
                 <div class="detail">
-                    <p>
-                        Set of 6 Callway Tour Golf balls.<br /> <br />
-                        These Callaway Golf Balls combine Tour-proven performance with unparalleled feel and exceptional mis-hit
-                        forgiveness. A high-speed Mantle system delivers fantastic feel, shot-controlling spins, and scoring shots.
+                    <p>NBA and NCAA-approved Basketball. <br /> <br />
+                        Become like one of the pros with this NBA-approved Basketball! Improved durable exterior for extend play.
+                        Great for indoor or outdoor games.
                     </p><br />
-                    <ul class="detail">
-                        <li>Triple Track Technology lines to improve putting accuracy</li>
-                        <li>Larger inner core maximizes compression energy while promoting high launch for longer distance</li>
-                        <li>Thinner, more resilient Tour Urethane cover delivers increased ball speed</li>
-                        <li>Weight: 5.5 oz.</li>
+                    <ul>
+                        <li>For indoor/outdoor play</li>
+                        <li>Ideal size for adults</li>
+                        <li>Composite cover for various surfaces</li>
+                        <li>Replica NBA Basketball</li>
                     </ul>
                 </div>
             </div>
           <div class="content">
             <h1>Order Form</h1>
               <div class="orderform">
-                <form name="contactform" id="contactform" method="post" enctype="text/plain" onsubmit="getEventValues();" action="">
+                <form name="contactform" id="contactform" method="post" onsubmit="getEventValues();" action="../php/insert.php">
                   <div class="row">
                     <div class="col-50">
                       <h3>Buyer's Information</h3>
@@ -150,70 +149,70 @@
                   </button>
                 </form>
               </div>
-              <script type="text/javascript" src="../validation.js"></script>
+
           </div>
           <div class="footer">
-              <div class="content">
-                  <table width="100%" cellspacing="20">
-                      <tbody>
-                          <tr>
-                              <td>
-                                  <h3>WHO WE ARE</h3>
+                <div class="content">
+                    <table width="100%" cellspacing="20">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h3>WHO WE ARE</h3>
 
-                                  <p>  Welcome to Sports Store!</p>
-                                      <p>
+                                    <p>  Welcome to Sports Store!</p>
+                                        <p>
 
-                                          We are an online business currently based in
-                                          Irvine, California.
-
-
-                                      </p>
-                                      <a href="../about.html">Learn more... </a>
+                                            We are an online business currently based in
+                                            Irvine, California.
 
 
-                              </td>
-                              <td>
-                                      <h3>MAIN OFFICE</h3>
-                                      <p>
-                                          <address>
-                                                  40234 Sunrise Blvd,
-                                                  Irvine, California, 92811
-                                          </address>
-
-                                      </p>
-                                      <p> Tel: (949) 800 2221</p>
-                                      <p> Email: info@sportstore.com</p>
-                                      <a href="../contact.html">Learn More...</a>
+                                        </p>
+                                        <a href="../about.html">Learn more... </a>
 
 
-                              </td>
-                              <td>
+                                </td>
+                                <td>
+                                        <h3>MAIN OFFICE</h3>
+                                        <p>
+                                            <address>
+                                                    40234 Sunrise Blvd,
+                                                    Irvine, California, 92811
+                                            </address>
 
-                                      <h3>QUICK LINKS</h3>
-                                      <a href="../index.html">First Page</a>
-                                      <a href="../products.html">What We Offer</a>
-                                      <a href="../order.html">Order Now</a>
-                                      <a href="../about.html">Who We Are</a>
-                                      <a href="../contact.html">Get In Touch</a>
+                                        </p>
+                                        <p> Tel: (949) 800 2221</p>
+                                        <p> Email: info@sportstore.com</p>
+                                        <a href="../contact.html">Learn More...</a>
 
-                              </td>
-                              <td>
-                                      <h3>FOLLOW US</h3>
-                                      <a href="#">Facebook</a>
-                                      <a href="#">Instagram</a>
-                                      <a href="#">Twitter</a>
-                                      <a href="#">LinkedIn</a>
-                                      <a href="#">Pinterest</a>
-                              </td>
-                          </tr>
 
-                      </tbody>
-                  </table>
-              </div>
-              <p class="copyright">
-                  Copyright &copy; 2020 Sports Store - All Rights Reserved
-              </p>
-          </div>
+                                </td>
+                                <td>
+
+                                        <h3>QUICK LINKS</h3>
+                                        <a href="../index.html">First Page</a>
+                                        <a href="../products.html">What We Offer</a>
+                                        <a href="../order.html">Order Now</a>
+                                        <a href="../about.html">Who We Are</a>
+                                        <a href="../contact.html">Get In Touch</a>
+
+                                </td>
+                                <td>
+                                        <h3>FOLLOW US</h3>
+                                        <a href="#">Facebook</a>
+                                        <a href="#">Instagram</a>
+                                        <a href="#">Twitter</a>
+                                        <a href="#">LinkedIn</a>
+                                        <a href="#">Pinterest</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <p class="copyright">
+                    Copyright &copy; 2020 Sports Store - All Rights Reserved
+                </p>
+            </div>
     </div>
     <script type="text/javascript" src="../main.js"></script>
 </body>
