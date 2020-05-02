@@ -20,7 +20,7 @@
         cvv INT(4) NOT NULL
     )";
 
-    $tables['products_table'] = "CREATE TABLE products_table (
+    $tables['products'] = "CREATE TABLE products (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
         summary TEXT NOT NULL,
