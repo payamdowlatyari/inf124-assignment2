@@ -1,98 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../style.css" rel="stylesheet">
-    <title>INF124-Assignment1</title>
-</head>
+<?=file_get_contents("components/head.html");?>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="content">
-                <div class="logo">
-                    <a href="../index.html"><h1>Sports Store</h1></a>
-                </div>
-            </div>
-            <div class="navbar">
-                <ul class="content">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../products.html" class="active">Products</a></li>
-                <li><a href="../about.html">About Us</a></li>
-                <li><a href="../contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
+        <?=file_get_contents("components/header.html");?>
         <div class="main">
             <div class="content" id="mainContent" style="padding-bottom: 10px;">
                 <h1>Your order has been confirmed.</h1>
                 <a href="../index.html" style="margin-left: 20px;">If you don't click here in the next five seconds, you will be automatically redirected.</a>
                 <br>
             </div>
-          <div class="footer">
-              <div class="content">
-                  <table width="100%" cellspacing="20">
-                      <tbody>
-                          <tr>
-                              <td>
-                                  <h3>WHO WE ARE</h3>
-
-                                  <p>  Welcome to Sports Store!</p>
-                                      <p>
-
-                                          We are an online business currently based in
-                                          Irvine, California.
-
-
-                                      </p>
-                                      <a href="../about.html">Learn more... </a>
-
-
-                              </td>
-                              <td>
-                                      <h3>MAIN OFFICE</h3>
-                                      <p>
-                                          <address>
-                                                  40234 Sunrise Blvd,
-                                                  Irvine, California, 92811
-                                          </address>
-
-                                      </p>
-                                      <p> Tel: (949) 800 2221</p>
-                                      <p> Email: info@sportstore.com</p>
-                                      <a href="../contact.html">Learn More...</a>
-
-
-                              </td>
-                              <td>
-
-                                      <h3>QUICK LINKS</h3>
-                                      <a href="../index.html">First Page</a>
-                                      <a href="../products.html">What We Offer</a>
-                                      <a href="../order.html">Order Now</a>
-                                      <a href="../about.html">Who We Are</a>
-                                      <a href="../contact.html">Get In Touch</a>
-
-                              </td>
-                              <td>
-                                      <h3>FOLLOW US</h3>
-                                      <a href="#">Facebook</a>
-                                      <a href="#">Instagram</a>
-                                      <a href="#">Twitter</a>
-                                      <a href="#">LinkedIn</a>
-                                      <a href="#">Pinterest</a>
-                              </td>
-                          </tr>
-
-                      </tbody>
-                  </table>
-              </div>
-              <p class="copyright">
-                  Copyright &copy; 2020 Sports Store - All Rights Reserved
-              </p>
-          </div>
+        <?=file_get_contents("components/footer.html");?>
     </div>
-    <script type="text/javascript" src="../orderConfirm.js"></script>
+    <script type="text/javascript" src="js/orderConfirm.js"></script>
 </body>
 </html>
