@@ -1,23 +1,28 @@
+<?php
+    require_once "php/dbconnect.php";
+    $_GET['id'] = empty($_GET['id'])?1:$_GET['id'];
+    $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetch();
+?>
 <?=file_get_contents("components/head.html");?>
 <body>
     <div class="container">
         <?=file_get_contents("components/header.html");?>
         <div class="main">
             <div class="content">
-                <h1>Basketball</h1>
+                <h1><?=$stmt['name'];?></h1>
                 <table width="100%" cellspacing="20">
                     <tbody>
                         <tr>
                             <td width="30%" style="text-align: center;">
-                                <img src="../assets/baseketball.jpg" class="thumbnail" width="250" alt="basketball" />
+                                <img src="assets/<?=$stmt['thumbnail'];?>" class="thumbnail" width="250" alt="<?=$stmt['name'];?>" />
                             </td>
                             <td style="display: inline-block;">
                                 <h4>Name:</h4>
-                                <p>Basketball</p>
+                                <p><?=$stmt['name'];?></p>
                                 <h4>Category:</h4>
-                                <p>Sports Balls</p>
+                                <p><?=$stmt['category'];?></p>
                                 <h4>Price:</h4>
-                                <p id="unitPrice">$23.99</p>
+                                <p id="unitPrice">$<?=$stmt['price'];?></p>
                                 <select id="quantityOptions" onchange="updatePrice()">
                                     <option>1</option>
                                     <option>2</option>
@@ -27,24 +32,13 @@
                                 </select>
                                 <hr />
                                 <h4>Total Price:</h4>
-                                <span class="output">$23.99</span>
+                                <span class="output">$<?=$stmt['price'];?></span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <h1>Details</h1>
-                <div class="detail">
-                    <p>NBA and NCAA-approved Basketball. <br /> <br />
-                        Become like one of the pros with this NBA-approved Basketball! Improved durable exterior for extend play.
-                        Great for indoor or outdoor games.
-                    </p><br />
-                    <ul>
-                        <li>For indoor/outdoor play</li>
-                        <li>Ideal size for adults</li>
-                        <li>Composite cover for various surfaces</li>
-                        <li>Replica NBA Basketball</li>
-                    </ul>
-                </div>
+                <div class="detail"><?=$stmt['detail'];?></div>
             </div>
           <div class="content">
             <h1>Order Form</h1>
@@ -131,6 +125,6 @@
           </div>
         <?=file_get_contents("components/header.html");?>
     </div>
-    <script type="text/javascript" src="../main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
