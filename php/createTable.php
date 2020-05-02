@@ -23,6 +23,7 @@
     $tables['products_table'] = "CREATE TABLE products_table (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
+        summary TEXT NOT NULL,
         thumbnail VARCHAR(50) NOT NULL,
         category VARCHAR(30) NOT NULL,
         detail TEXT NOT NULL,

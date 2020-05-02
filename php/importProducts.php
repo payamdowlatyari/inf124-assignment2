@@ -1,7 +1,7 @@
 <?php
     require_once "dbconnect.php";
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Basketball', 'baseketball.jpg', 'Sports Balls', '23.99', '<p>NBA and NCAA-approved Basketball.<br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Basketball', 'NBA AND NCAA-APPROVED BASKETBALL', 'baseketball.jpg', 'Sports Balls', '23.99', '<p>NBA and NCAA-approved Basketball.<br />
 Become like one of the pros with this NBA-approved Basketball! Improved durable exterior for extend play.
 Great for indoor or outdoor games.</p>
 <ul>
@@ -12,8 +12,8 @@ Great for indoor or outdoor games.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Soccer Ball', 'soccer.jpg', 'Sports Balls', '49.99', '<p>NFHS and NCAA-approved Soccer ball. <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Soccer Ball', 'NFHS AND NCAA-APPROVED SOCCER BALL', 'soccer.jpg', 'Sports Balls', '49.99', '<p>NFHS and NCAA-approved Soccer ball. <br />
 Standard 6-panel construction with original look and feel. Thermal bonded construction allow for a
 more realistic trajectory and better touch.</p>
 <ul>
@@ -23,8 +23,8 @@ more realistic trajectory and better touch.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Tennis Balls', 'tennis.jpeg', 'Sports Balls', '15.99', '<p>6 can pack of Tennis balls. 3 balls per can. <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Tennis Balls', '6 CAN PACK OF TENNIS BALLS. 3 BALLS PER CAN', 'tennis.jpeg', 'Sports Balls', '15.99', '<p>6 can pack of Tennis balls. 3 balls per can. <br />
 Our Tennis Balls are officially approved by USTA® League Tennis. For use on hard tennis courts, they are built
 with natural rubber for good feel and shock resistance. The wool fiber composition increases durability for
 longer play and reduces cracking. This multi-pack provides all the equipment you need from one seasonto the next.</p>
@@ -36,8 +36,8 @@ longer play and reduces cracking. This multi-pack provides all the equipment you
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Cricket Balls', 'cricketBall.jpeg', 'Sports Balls', '39.99', '<p>6 pack of Cricket balls. ACF-APPROVED. <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Cricket Balls', '6 PACK OF CRICKET BALLS. ACF-APPROVED CRICKET BALLS', 'cricketBall.jpeg', 'Sports Balls', '39.99', '<p>6 pack of Cricket balls. ACF-APPROVED. <br />
 Made for professional-level play, these Cricket balls provides you with standard four-piece leather
 construction and quality stitching for extended, aggressive matches.</p>
 <ul>
@@ -48,8 +48,8 @@ construction and quality stitching for extended, aggressive matches.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Golf Balls', 'goldBall.jpg', 'Sports Balls', '39.99', '<p>Set of 6 Callway Tour Golf balls.<br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Golf Balls', 'SET OF 6 CALLWAY TOUR GOLF BALLS', 'goldBall.jpg', 'Sports Balls', '39.99', '<p>Set of 6 Callway Tour Golf balls.<br />
 These Callaway Golf Balls combine Tour-proven performance with unparalleled feel and exceptional mis-hit
 forgiveness. A high-speed Mantle system delivers fantastic feel, shot-controlling spins, and scoring shots.
 </p>
@@ -61,8 +61,8 @@ forgiveness. A high-speed Mantle system delivers fantastic feel, shot-controllin
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Basketball Hoop', 'baseketballHoop.jpeg', 'Sports Equipment', '108.99', '<p>NBA and NCAA-approved Basketball Hoop for home use. <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Basketball Hoop', 'NBA AND NCAA-APPROVED BASKETBALL HOOP', 'baseketballHoop.jpeg', 'Sports Equipment', '108.99', '<p>NBA and NCAA-approved Basketball Hoop for home use. <br />
 Enjoy hours of fun with friends and family in your own driveway or backyard! This portable Basketball Hoop
 allows you to move the hoop at your convinience. Turn your backyard into a home court for serious play or
 place it in the driveway and have neighbors come over. Lower the rim down to 7.5 feet to accommodate
@@ -76,8 +76,8 @@ younger players and up to 10 feet for adults.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Soccer Cleats', 'soccerCleats.png', 'Sportswear', '49.99', '<p>NFHS and NCAA-approved Soccer Cleats <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Soccer Cleats', 'NFHS AND NCAA-APPROVED SOCCER CLEATS', 'soccerCleats.png', 'Sportswear', '49.99', '<p>NFHS and NCAA-approved Soccer Cleats <br />
 Dominate the field with these fashionable, professional level Soccer cleats from Nike. Made with
 micro-textures that enhance ball handling and equipped with a sturdy frame that provides traction and
 fast movement.</p>
@@ -88,8 +88,8 @@ fast movement.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Tennis Racket', 'tennisRackets.jpg', 'Sports Accessories', '29.99', '<p>UTSA Approved Tennis Racket<br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Tennis Racket', 'UTSA APPROVED TENNIS RACKET', 'tennisRackets.jpg', 'Sports Accessories', '29.99', '<p>UTSA Approved Tennis Racket<br />
 Whether your at practice or in a match, this Tennis Racket will enable you to control the court. Enhance your
 game with stability and control from the extended handle.</p>
 <ul>
@@ -100,8 +100,8 @@ game with stability and control from the extended handle.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Cricket Bat', 'cricketBat.jpeg', 'Sports Accessories', '29.99', '<p>ICC Approved Cricket Bat <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Cricket Bat', 'ICC APPROVED CRICKET BAT', 'cricketBat.jpeg', 'Sports Accessories', '29.99', '<p>ICC Approved Cricket Bat <br />
 Well-crafted blade with thick edges. This professional Cricket bat is suitable for adults with an
 intermediate playing level.</p>
 <ul>
@@ -112,8 +112,8 @@ intermediate playing level.</p>
 </ul>')";
     $pdo->exec($sql);
 
-    $sql = "INSERT INTO products_table (name, thumbnail, category, price, detail)
-            VALUES ('Golf Club', 'golfClub.jpg', 'Sports Accessories', '69.99', '<p>UGSA Approved Golf Club. <br />
+    $sql = "INSERT INTO products_table (name, summary, thumbnail, category, price, detail)
+            VALUES ('Golf Club', 'UGSA APPROVED GOLF CLUB', 'golfClub.jpg', 'Sports Accessories', '69.99', '<p>UGSA Approved Golf Club. <br />
 Execute all scoring shots with this one short game weapon. Equipped with an All-Terrain Versatility,
 this wedge allows golfers to achieve greater success in any condition.</p>
 <ul>
