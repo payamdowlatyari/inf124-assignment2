@@ -407,3 +407,17 @@ input[type=submit]:hover {
 
 
 
+#stateList{
+	padding-left: 5px;
+	box-shadow: 1px 1px 5px #787878;
+	border-radius: 4px;
+	color: #15161d;
+	cursor: pointer;
+	position: sticky;
+	
+}
+
+
+#stateList li{
+	list-style-type: none; 
+}

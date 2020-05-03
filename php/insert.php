@@ -16,7 +16,8 @@
         $quantity = $_POST['quantity'];
         $cardname = $_POST['cardname'];
         $cardnumber = $_POST['cardnumber'];
-        $expmonth = $_POST['expmonth'];
+        $num_month = $_POST['expmonth'];
+        $expmonth = number_format($num_month);
         $expyear = $_POST['expyear'];
         $cvv = $_POST['cvv'];
 
