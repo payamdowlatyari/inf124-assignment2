@@ -49,7 +49,7 @@ function getEventValues() {
       goodForm = false;
     }
 
-    states = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", ];
+    states = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",];
     if (!states.includes(state)) {
       alert("Invalid state input");
     }
@@ -66,7 +66,46 @@ function sendEmail() {
 }
 
 function updatePrice() {
-    let total = document.getElementById('quantityOptions').value;
-    let price = document.getElementById('unitPrice').innerHTML.substring(1);
-    document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
+  let total = document.getElementById('quantityOptions').value;
+  let price = document.getElementById('unitPrice').innerHTML.substring(1);
+  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
 }
+
+// using jQuery and Ajax for form autocomplete
+$(document).ready(function () {
+  $('#state').keyup(function () {
+    var query = $(this).val();
+    if (query != '') {
+      $.ajax({
+        url: "./php/search.php",
+        method: "POST",
+        data: {
+          query: query
+        },
+        success: function (data) {
+          $('#stateList').fadeIn();
+          $('#stateList').html(data);
+        }
+      });
+    }
+  });
+  $(document).on('click', 'li', function () {
+    $('#state').val($(this).text());
+    $('#stateList').fadeOut();
+  });
+
+
+  $('#method').change(function () {
+    var choice = $(this).val();
+    if (choice == "Overnight") {
+      $('#shipping').html(' (+$12.00)');
+    }
+    if (choice == "2-day expedited") {
+      $('#shipping').html(' (+$9.50)');
+    }
+    if (choice == "7-day ground") {
+      $('#shipping').html(' (+$6.25)');
+    }
+  })
+
+});
