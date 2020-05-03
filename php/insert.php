@@ -39,6 +39,4 @@
 
     $pdo->exec($sql);
     header("refresh:0.5; url=./orderConfirmation.php");
-    // url must go back to product page
-    // alternatively, show order confirmation, then go back to home page
 ?>
