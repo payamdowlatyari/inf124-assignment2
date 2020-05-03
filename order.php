@@ -1,4 +1,49 @@
 <?=file_get_contents("components/head.html");?>
+<script>
+  $(document).ready(function(){
+    console.log("ready");
+    $("#orderform").submit(function(event){
+      console.log("hi");
+      event.preventDefault();
+      var fname = $("#fname").val();
+      var lname = $("#lname").val();
+      var email = $("#email").val();
+      var phone = $("#phone").val();
+      var adr = $("#adr").val();
+      var city = $("#city").val();
+      var state = $("#state").val();
+      var zip = $("#zip").val();
+      var method = $("#method").val();
+      var pid = $("#pid").val();
+      var quantity = $("#quantity").val();
+      var cardname = $("#cname").val();
+      var cardnumber = $("#ccnum").val();
+      var expmonth = $("#expmonth").val();
+      var expyear = $("#expyear").val();
+      var cvv = $("#cvv").val();
+      var submit = $("#order-submit").val();
+      $(".form-message").load("/php/insert.php", {
+        firstname: fname,
+        lastname: lname,
+        email: email,
+        phone: phone,
+        address: adr,
+        city: city,
+        state: state,
+        zip: zip,
+        method: method,
+        productid: pid,
+        submit: submit,
+        quantity: quantity,
+        cardname: cardname,
+        cardnumber: cardnumber,
+        expmonth: expmonth,
+        expyear: expyear,
+        cvv: cvv
+      });
+    });
+  });
+</script>
   <body>
     <div class="container">
       <?=file_get_contents("components/header.html");?>
@@ -6,7 +51,8 @@
         <div class="content">
           <h1>Order Form</h1>
             <div class="orderform">
-              <form name="contactform" method="post" enctype="text/plain" onsubmit="getEventValues();">
+              <form id="orderform" method="POST" enctype="text/plain">
+                <p class="form-message"></p>
                 <div class="row">
                   <div class="col-50">
                     <h3>Buyer's Information</h3>
@@ -79,7 +125,7 @@
                   </div>
                 </div>
 
-                <button type="submit" class="js-submit-order btn" tabindex="0" id="formSubmit">
+                <button id="order-submit" type="submit" class="js-submit-order btn" tabindex="0" id="formSubmit">
                   Submit Order
                 </button>
               </form>
@@ -88,6 +134,5 @@
       </div>
         <?=file_get_contents("components/footer.html");?>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
