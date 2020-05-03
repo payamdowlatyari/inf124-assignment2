@@ -96,7 +96,20 @@
                       <label for="ccnum">Credit card number</label>
                       <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required />
                       <label for="expmonth">Exp Month</label>
-                      <input type="text" id="expmonth" name="expmonth" placeholder="September" required />
+                      <select id="expmonth" name="expmonth" placeholder="September" required >
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                      </select>
 
                       <div class="row">
                         <div class="col-50">

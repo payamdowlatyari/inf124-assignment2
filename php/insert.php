@@ -15,7 +15,10 @@
     $quantity = $_POST['quantity'];
     $cardname = $_POST['cardname'];
     $cardnumber = $_POST['cardnumber'];
-    $expmonth = $_POST['expmonth'];
+
+    $num_month = $_POST['expmonth'];
+    $expmonth = number_format($num_month);
+
     $expyear = $_POST['expyear'];
     $cvv = $_POST['cvv'];
 
@@ -23,6 +26,8 @@
         $sameadr = 1;
     else
         $sameadr = 0;
+
+    // $price
 
     $sql = "INSERT INTO orders (
                 firstname, lastname, email, phone, address,
@@ -33,7 +38,7 @@
                     '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
 
     $pdo->exec($sql);
-    header("refresh:0.5; url=../product/orderConfirmation.html");
+    header("refresh:0.5; url=./orderConfirmation.php");
     // url must go back to product page
     // alternatively, show order confirmation, then go back to home page
 ?>
