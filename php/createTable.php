@@ -1,7 +1,7 @@
 <?php
-    require_once "dbconnect.php";
+require_once "dbconnect.php";
 
-    $tables['orders'] = "CREATE TABLE orders (
+$tables['orders'] = "CREATE TABLE orders (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         firstname VARCHAR(30) NOT NULL,
         lastname VARCHAR(30) NOT NULL,
@@ -21,7 +21,7 @@
         cvv INT(4) NOT NULL
     )";
 
-    $tables['products'] = "CREATE TABLE products (
+$tables['products'] = "CREATE TABLE products (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
         summary TEXT NOT NULL,
@@ -31,18 +31,25 @@
         price FLOAT(2)
     )";
 
-    $tables['states'] = "CREATE TABLE states ( 
+$tables['states'] = "CREATE TABLE states ( 
         state_id SMALLINT, 
         state_name VARCHAR(32),
         state_abbr VARCHAR(3)
     )";
 
-    foreach ($tables as $table => $query) {
-        $results = $pdo->query("SHOW TABLES LIKE '$table'");
-        if($results->rowCount() == 0){
-            echo "<p style='color: green;'>Table $table created successfully</p>";
-            $pdo->exec($query);
-        } else {
-            echo "<p style='color: red;'>Table $table existed</p>";
-        }
+$tables['tax'] = "CREATE TABLE tax(
+    State         VARCHAR(2) NOT NULL 
+   ,ZipCode       INTEGER  NOT NULL PRIMARY KEY
+   ,TaxRegionName VARCHAR(89) NOT NULL
+   ,CombinedRate  NUMERIC(8,6) NOT NULL
+ )";
+
+foreach ($tables as $table => $query) {
+    $results = $pdo->query("SHOW TABLES LIKE '$table'");
+    if ($results->rowCount() == 0) {
+        echo "<p style='color: green;'>Table $table created successfully</p>";
+        $pdo->exec($query);
+    } else {
+        echo "<p style='color: red;'>Table $table existed</p>";
     }
+}

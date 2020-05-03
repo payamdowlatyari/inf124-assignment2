@@ -129,8 +129,13 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                         <input type="checkbox" checked="checked" name="sameadr" />
                                         Billing address same as shipping
                                     </label>
+
                                     <br /><br />
+
+
                                 </div>
+                                <div>Tax Rate (based on zip code) </div>
+                                <span id="tax-rate"></span>
                             </div>
                         </div>
 
@@ -141,7 +146,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                 </div>
 
             </div>
-            <?= file_get_contents("components/header.html"); ?>
+            <?= file_get_contents("components/footer.html"); ?>
         </div>
         <script type="text/javascript" src="js/main.js"></script>
 </body>

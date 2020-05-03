@@ -77,7 +77,7 @@ $(document).ready(function () {
     var query = $(this).val();
     if (query != '') {
       $.ajax({
-        url: "./php/search.php",
+        url: "./php/searchState.php",
         method: "POST",
         data: {
           query: query
@@ -92,6 +92,25 @@ $(document).ready(function () {
   $(document).on('click', 'li', function () {
     $('#state').val($(this).text());
     $('#stateList').fadeOut();
+  });
+
+
+  $('#zip').keyup(function () {
+
+    var query = $(this).val();
+    if (query != '') {
+      $.ajax({
+        url: "./php/searchTaxRate.php",
+        method: "POST",
+        data: {
+          query: query
+        },
+        success: function (data) {
+          $('#tax-rate').fadeIn();
+          $('#tax-rate').html(data);
+        }
+      });
+    }
   });
 
 
