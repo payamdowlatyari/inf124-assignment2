@@ -43,7 +43,7 @@
           <div class="content">
             <h1>Order Form</h1>
               <div class="orderform">
-                <form name="contactform" id="contactform" method="post" onsubmit="getEventValues();" action="../php/insert.php">
+                <form name="contactform" id="contactform" method="post" action="php/insert.php">
                   <div class="row">
                     <div class="col-50">
                       <h3>Buyer's Information</h3>

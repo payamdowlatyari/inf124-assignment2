@@ -36,7 +36,6 @@
             VALUES ('$firstname', '$lastname', '$email', '$phone', '$address',
                     '$city', '$state', '$zip', '$method', '$productid', '$quantity',
                     '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
-
     $pdo->exec($sql);
-    header("refresh:0.5; url=./orderConfirmation.php");
+    header("refresh:0.5; url=../orderConfirmation.php");
 ?>
