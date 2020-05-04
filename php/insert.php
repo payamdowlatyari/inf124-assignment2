@@ -51,10 +51,6 @@
                         '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
 
         $pdo->exec($sql);
-        // $newLocation = "orderConfirmation.php?orderid=".$randomOrderID;
-        // header("Location:".$newLocation);
-        // url must go back to product page
-        // alternatively, show order confirmation, then go back to home page
     }
 ?>
 <script>

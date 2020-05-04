@@ -46,6 +46,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                 <h1>Order Form</h1>
                 <div class="orderform">
                     <form name="contactform" id="contactform" method="post" action="php/insert.php">
+                        <p class="form-message"></p>
                         <div class="row">
                             <div class="col-50">
                                 <h3>Buyer's Information</h3>
@@ -139,8 +140,8 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                             </div>
                         </div>
 
-                        <button type="submit" id="submitText" class="js-submit-order btn" tabindex="0" id="formSubmit">
-                            Validate Order
+                        <button type="submit" id="order-submit" class="js-submit-order btn" tabindex="0" id="formSubmit">
+                            Submit Order
                         </button>
                     </form>
                 </div>

@@ -1,17 +1,12 @@
 function getEventValues() {
   try {
     var goodForm = true;
-    // var fname = document.getElementById("fname").value;
-    // var lname = document.getElementById("lname").value;
     var email = document.getElementById("email").value;
     var phone = document.getElementById("phone").value;
-    // var adr = document.getElementById("adr").value;
-    // var city = document.getElementById("city").value;
     var state = document.getElementById("state").value;
     var zip = document.getElementById("zip").value;
     var quantity = document.getElementById("quantity").value;
     var productid = document.getElementById("pid").value;
-    // var cname = document.getElementById("cname").value;
     var ccnum = document.getElementById("ccnum").value;
     var expmonth = document.getElementById("expmonth").value;
     var expyear = document.getElementById("expyear").value;
@@ -70,6 +65,49 @@ function updatePrice() {
   let price = document.getElementById('unitPrice').innerHTML.substring(1);
   document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
 }
+
+// form validation
+$(document).ready(function(){
+  $("#orderform").submit(function(event){
+    event.preventDefault();
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var adr = $("#adr").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var zip = $("#zip").val();
+    var method = $("#method").val();
+    var pid = $("#pid").val();
+    var quantity = $("#quantity").val();
+    var cardname = $("#cname").val();
+    var cardnumber = $("#ccnum").val();
+    var expmonth = $("#expmonth").val();
+    var expyear = $("#expyear").val();
+    var cvv = $("#cvv").val();
+    var submit = $("#order-submit").val();
+    $(".form-message").load("./php/insert.php", {
+      firstname: fname,
+      lastname: lname,
+      email: email,
+      phone: phone,
+      address: adr,
+      city: city,
+      state: state,
+      zip: zip,
+      method: method,
+      productid: pid,
+      submit: submit,
+      quantity: quantity,
+      cardname: cardname,
+      cardnumber: cardnumber,
+      expmonth: expmonth,
+      expyear: expyear,
+      cvv: cvv
+    });
+  });
+});
 
 // using jQuery and Ajax for form autocomplete
 $(document).ready(function () {

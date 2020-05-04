@@ -21,6 +21,7 @@
                 <p>Email : <?php echo $email;?><br>
                 <p>Product ID: <?php echo $pid;?></p>
                 <p>Quantity: <?php echo $quantity;?></p>
+                <br/><br/>
             </div>
         <?=file_get_contents("components/footer.html");?>
     </div>
