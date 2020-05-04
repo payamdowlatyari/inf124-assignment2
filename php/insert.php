@@ -61,6 +61,6 @@
     var empty = "<?php echo $errorEmpty;?>";
     var email = "<?php echo $errorEmail;?>";
     if(empty == false && email== false){
-        window.location.href = "/php/orderConfirmation.php?orderid=" + <?php echo $randomOrderID;?>
+        window.location.href = "./orderConfirmation.php?orderid=" + <?php echo $randomOrderID;?>
     }
 </script>
