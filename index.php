@@ -18,7 +18,7 @@
                                             <a href="detail.php?id='.$row['id'].'"><img src="assets/'.$row['thumbnail'].'" alt="'.$row['name'].' picture"></a>
                                             <h4>'.$row['category'].'</h4>
                                             <h2>'.$row['name'].'</h2>
-                                            <h3>'.$row['price'].'</h3>
+                                            <h3>$'.$row['price'].'</h3>
                                             <p>'.$row['summary'].'</p>
                                             <hr />
                                             <a href="detail.php?id='.$row['id'].'" class="addtocart">See Details</a>
@@ -49,7 +49,7 @@
                                             <a href="detail.php?id='.$row['id'].'"><img src="assets/'.$row['thumbnail'].'" alt="'.$row['name'].' picture"></a>
                                             <h4>'.$row['category'].'</h4>
                                             <h2>'.$row['name'].'</h2>
-                                            <h3>'.$row['price'].'</h3>
+                                            <h3>$'.$row['price'].'</h3>
                                             <p>'.$row['summary'].'</p>
                                             <hr />
                                             <a href="detail.php?id='.$row['id'].'" class="addtocart">See Details</a>
