@@ -22,7 +22,7 @@
       var expyear = $("#expyear").val();
       var cvv = $("#cvv").val();
       var submit = $("#order-submit").val();
-      $(".form-message").load("/php/insert.php", {
+      $(".form-message").load("./php/insert.php", {
         firstname: fname,
         lastname: lname,
         email: email,

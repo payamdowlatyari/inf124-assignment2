@@ -46,6 +46,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                 <h1>Order Form</h1>
                 <div class="orderform">
                     <form name="contactform" id="contactform" method="post" action="php/insert.php">
+                        <p class="form-message"></p>
                         <div class="row">
                             <div class="col-50">
                                 <h3>Buyer's Information</h3>
@@ -75,25 +76,30 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                     <div class="col-50">
                                         <label for="zip">Zip</label>
                                         <input type="text" id="zip" name="zip" placeholder="10001" required />
-
                                     </div>
                                 </div>
                                 <br>
                                 <label for="method">Shipping method</label>
                                 <select id="method" name="method">
-                                    <option>Overnight</option>
-                                    <option selected>2-day expedited</option>
-                                    <option>7-day ground</option>
+                                    <option>Overnight ($11.00)</option>
+                                    <option selected>2-day expedited ($9.50)</option>
+                                    <option>7-day ground ($6.25)</option>
                                 </select>
                             </div>
 
                             <div class="col-50">
                                 <h3>Order Details</h3>
                                 <br />
-                                <label for="quantity">Product ID</label>
+                                <label for="pid">Product ID</label>
                                 <input type="text" id="pid" name="productid" placeholder="123456789" required />
-                                <label for="pid">Quantity</label>
-                                <input type="text" id="quantity" name="quantity" placeholder="5" required />
+                                <label for="quantity">Quantity</label>
+                                <select id="quantity" onchange="updatePrice2()">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                                 <h3>Payment Information</h3>
                                 <br />
                                 <label for="cname">Name on Card</label>
@@ -130,38 +136,34 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                         <input type="checkbox" checked="checked" name="sameadr" />
                                         Billing address same as shipping
                                     </label>
-
                                     <br /><br />
-
-
                                 </div>
+                                <div id="price-table">
 
-                                <div>&nbsp;&nbsp;&nbsp;Total tax </div>
-                                <span>+ $</span><span id="tax-amount"></span>
-                                <div>
-                                    <div>&nbsp;&nbsp;&nbsp;Shiping </div>
-                                    <span>+ $</span> <span id="shipping"></span>
+                                    <div>Total Price:</div>
+                                    <div class="price-item">&nbsp; &nbsp;$<span id="total-price"></span></div>
+
+                                    <div>Total Tax: </div>
+                                    <div class="price-item">+ $<span id="tax-amount"></span></div>
+                                    <div>
+                                        <div>Shiping: </div>
+                                        <div class="price-item">+ $<span id="shipping"></span></div>
+                                    </div>
+
+                                    <div>
+                                        <h4>Final Price</h4>
+
+                                        <div class="price-item">= $<span id="final-price"></span></div>
+                                    </div>
                                 </div>
-
-
-                                <div>
-                                    <div id="btn-price">&nbsp;&nbsp;&nbsp;Final Price</div>
-                                    <hr>
-                                    <span>= $</span>
-                                    <span id="final-price"></span>
-                                </div>
-
                             </div>
-
                         </div>
-
-                        <button type="submit" id="submitText" class="js-submit-order btn" tabindex="0" id="formSubmit">
-                            Validate Order
+                        <button type="submit" id="order-submit" class="js-submit-order btn" tabindex="0"
+                            id="formSubmit">
+                            Submit Order
                         </button>
                     </form>
-
                 </div>
-
             </div>
             <?= file_get_contents("components/footer.html"); ?>
         </div>

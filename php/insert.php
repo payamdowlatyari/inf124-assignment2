@@ -51,16 +51,12 @@
                         '$cardname', '$cardnumber', '$expmonth', '$expyear', '$cvv')";
 
         $pdo->exec($sql);
-        // $newLocation = "orderConfirmation.php?orderid=".$randomOrderID;
-        // header("Location:".$newLocation);
-        // url must go back to product page
-        // alternatively, show order confirmation, then go back to home page
     }
 ?>
 <script>
     var empty = "<?php echo $errorEmpty;?>";
     var email = "<?php echo $errorEmail;?>";
     if(empty == false && email== false){
-        window.location.href = "/php/orderConfirmation.php?orderid=" + <?php echo $randomOrderID;?>
+        window.location.href = "./orderConfirmation.php?orderid=" + <?php echo $randomOrderID;?>
     }
 </script>

@@ -1,17 +1,12 @@
 function getEventValues() {
   try {
     var goodForm = true;
-    // var fname = document.getElementById("fname").value;
-    // var lname = document.getElementById("lname").value;
     var email = document.getElementById("email").value;
     var phone = document.getElementById("phone").value;
-    // var adr = document.getElementById("adr").value;
-    // var city = document.getElementById("city").value;
     var state = document.getElementById("state").value;
     var zip = document.getElementById("zip").value;
     var quantity = document.getElementById("quantity").value;
     var productid = document.getElementById("pid").value;
-    // var cname = document.getElementById("cname").value;
     var ccnum = document.getElementById("ccnum").value;
     var expmonth = document.getElementById("expmonth").value;
     var expyear = document.getElementById("expyear").value;
@@ -67,29 +62,73 @@ function sendEmail() {
   document.getElementById("contactform").action = "mailto:info@sportsstore.com";
 }
 
+var quantity = quantityOptions = 1;
+var price = document.getElementById('unitPrice').innerHTML.substring(1);
+var total = quantity * price;
+
 function updatePrice() {
-  let total = document.getElementById('quantityOptions').value;
-  let price = document.getElementById('unitPrice').innerHTML.substring(1);
-  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
+  quantityOptions = document.getElementById('quantityOptions').value;
+  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(quantityOptions * price).toFixed(2);
+  quantity = quantityOptions;
+  total = quantity * price;
 }
 
-// function finalPrice() {
-//   let total = document.getElementById('quantityOptions').value;
-//   let price = document.getElementById('unitPrice').innerHTML.substring(1);
-//   let tax = document.getElementById('tax-rate').value;
-//   let shipping = document.getElementById('shipping').value;
-//   //document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
-//   let final = (total * price) * tax + shipping;
-//   alert(final);
-// }
+function updatePrice2() {
+  let quantity = document.getElementById('quantity').value;
+  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(quantity * price).toFixed(2);
+  quantityOptions = quantity;
+  total = quantity * price;
+}
 
-
+// form validation
+$(document).ready(function () {
+  $("#orderform").submit(function (event) {
+    event.preventDefault();
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var adr = $("#adr").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var zip = $("#zip").val();
+    var method = $("#method").val();
+    var pid = $("#pid").val();
+    var quantity = $("#quantity").val();
+    var cardname = $("#cname").val();
+    var cardnumber = $("#ccnum").val();
+    var expmonth = $("#expmonth").val();
+    var expyear = $("#expyear").val();
+    var cvv = $("#cvv").val();
+    var submit = $("#order-submit").val();
+    $(".form-message").load("./php/insert.php", {
+      firstname: fname,
+      lastname: lname,
+      email: email,
+      phone: phone,
+      address: adr,
+      city: city,
+      state: state,
+      zip: zip,
+      method: method,
+      productid: pid,
+      submit: submit,
+      quantity: quantity,
+      cardname: cardname,
+      cardnumber: cardnumber,
+      expmonth: expmonth,
+      expyear: expyear,
+      cvv: cvv
+    });
+  });
+});
 
 // using jQuery and Ajax for form autocomplete
 $(document).ready(function () {
 
   var taxRate = 0;
-  var shipping = 0;
+  var shipping = 9.50;
+
 
   $('#state').keyup(function () {
     var query = $(this).val();
@@ -135,29 +174,23 @@ $(document).ready(function () {
 
   $('#method').change(function () {
     var choice = $(this).val();
-    if (choice == "Overnight") {
-      // $('#shipping').html(' (+$11.00)');
+    if (choice == "Overnight ($11.00)") {
       shipping = 11.00;
     }
-    if (choice == "2-day expedited") {
-      // $('#shipping').html(' (+$9.50)');
+    if (choice == "2-day expedited ($9.50)") {
       shipping = 9.50;
     }
-    if (choice == "7-day ground") {
-      // $('#shipping').html(' (+$6.25)');
+    if (choice == "7-day ground ($6.25)") {
       shipping = 6.25;
     }
   });
 
-  $('#btn-price').mouseover(function () {
-
-    let total = document.getElementById('quantityOptions').value;
-    let price = document.getElementById('unitPrice').innerHTML.substring(1);
-    let includeTax = total * price;
-    $('#tax-amount').html(includeTax * taxRate);
-    let final = (includeTax - (includeTax * taxRate) + shipping);
-    $('#shipping').html(shipping);
-    $('#final-price').html(final)
+  $(document).mouseover(function () {
+    $('#total-price').html(total.toFixed(2));
+    $('#tax-amount').html((total * taxRate).toFixed(2));
+    let final = (total + (total * taxRate) + shipping);
+    $('#shipping').html(shipping.toFixed(2));
+    $('#final-price').html(final.toFixed(2))
 
   })
 
