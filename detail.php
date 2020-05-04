@@ -75,10 +75,11 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                     <div class="col-50">
                                         <label for="zip">Zip</label>
                                         <input type="text" id="zip" name="zip" placeholder="10001" required />
+
                                     </div>
                                 </div>
                                 <br>
-                                <label for="method">Shipping method<span id="shipping"></span></label>
+                                <label for="method">Shipping method</label>
                                 <select id="method" name="method">
                                     <option>Overnight</option>
                                     <option selected>2-day expedited</option>
@@ -134,15 +135,31 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
 
 
                                 </div>
-                                <div>Tax Rate (based on zip code) </div>
-                                <span id="tax-rate"></span>
+
+                                <div>&nbsp;&nbsp;&nbsp;Total tax </div>
+                                <span>+ $</span><span id="tax-amount"></span>
+                                <div>
+                                    <div>&nbsp;&nbsp;&nbsp;Shiping </div>
+                                    <span>+ $</span> <span id="shipping"></span>
+                                </div>
+
+
+                                <div>
+                                    <div id="btn-price">&nbsp;&nbsp;&nbsp;Final Price</div>
+                                    <hr>
+                                    <span>= $</span>
+                                    <span id="final-price"></span>
+                                </div>
+
                             </div>
+
                         </div>
 
                         <button type="submit" id="submitText" class="js-submit-order btn" tabindex="0" id="formSubmit">
                             Validate Order
                         </button>
                     </form>
+
                 </div>
 
             </div>

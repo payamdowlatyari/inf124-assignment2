@@ -6,10 +6,10 @@ if (isset($_POST["query"])) {
     $result = mysqli_query($connect, $query);
     if (mysqli_num_rows($result) > 0) {
         if ($row = mysqli_fetch_array($result)) {
-            $output .= '<span>' . $row["CombinedRate"] . '</span>';
+            $output .=  $row["CombinedRate"];
         }
     } else {
-        $output .= '<span>0.000000</span>';
+        $output .= '0.000000';
     }
     echo $output;
 }

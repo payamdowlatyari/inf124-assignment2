@@ -17,6 +17,8 @@ function getEventValues() {
     var expyear = document.getElementById("expyear").value;
     var cvv = document.getElementById("cvv").value;
 
+
+
     var phoneNumberRE = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     if (!phone.match(phoneNumberRE)) {
       goodForm = false;
@@ -71,8 +73,24 @@ function updatePrice() {
   document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
 }
 
+// function finalPrice() {
+//   let total = document.getElementById('quantityOptions').value;
+//   let price = document.getElementById('unitPrice').innerHTML.substring(1);
+//   let tax = document.getElementById('tax-rate').value;
+//   let shipping = document.getElementById('shipping').value;
+//   //document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(total * price).toFixed(2);
+//   let final = (total * price) * tax + shipping;
+//   alert(final);
+// }
+
+
+
 // using jQuery and Ajax for form autocomplete
 $(document).ready(function () {
+
+  var taxRate = 0;
+  var shipping = 0;
+
   $('#state').keyup(function () {
     var query = $(this).val();
     if (query != '') {
@@ -108,6 +126,7 @@ $(document).ready(function () {
         success: function (data) {
           $('#tax-rate').fadeIn();
           $('#tax-rate').html(data);
+          taxRate = parseFloat(data).toFixed(3);
         }
       });
     }
@@ -117,14 +136,29 @@ $(document).ready(function () {
   $('#method').change(function () {
     var choice = $(this).val();
     if (choice == "Overnight") {
-      $('#shipping').html(' (+$12.00)');
+      // $('#shipping').html(' (+$11.00)');
+      shipping = 11.00;
     }
     if (choice == "2-day expedited") {
-      $('#shipping').html(' (+$9.50)');
+      // $('#shipping').html(' (+$9.50)');
+      shipping = 9.50;
     }
     if (choice == "7-day ground") {
-      $('#shipping').html(' (+$6.25)');
+      // $('#shipping').html(' (+$6.25)');
+      shipping = 6.25;
     }
+  });
+
+  $('#btn-price').mouseover(function () {
+
+    let total = document.getElementById('quantityOptions').value;
+    let price = document.getElementById('unitPrice').innerHTML.substring(1);
+    let includeTax = total * price;
+    $('#tax-amount').html(includeTax * taxRate);
+    let final = (includeTax - (includeTax * taxRate) + shipping);
+    $('#shipping').html(shipping);
+    $('#final-price').html(final)
+
   })
 
 });
