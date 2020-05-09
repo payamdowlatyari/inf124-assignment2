@@ -67,13 +67,6 @@ var price = document.getElementById('unitPrice').innerHTML.substring(1);
 var total = quantity * price;
 
 function updatePrice() {
-  quantityOptions = document.getElementById('quantityOptions').value;
-  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(quantityOptions * price).toFixed(2);
-  quantity = quantityOptions;
-  total = quantity * price;
-}
-
-function updatePrice2() {
   let quantity = document.getElementById('quantity').value;
   document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(quantity * price).toFixed(2);
   quantityOptions = quantity;

@@ -25,16 +25,6 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                 <p><?= $stmt['category']; ?></p>
                                 <h4>Price:</h4>
                                 <p id="unitPrice">$<?= $stmt['price']; ?></p>
-                                <select id="quantityOptions" onchange="updatePrice()">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <hr />
-                                <h4>Total Price:</h4>
-                                <span class="output">$<?= $stmt['price']; ?></span>
                             </td>
                         </tr>
                     </tbody>
@@ -90,8 +80,9 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                             <div class="col-50">
                                 <h3>Order Details</h3>
                                 <br />
-                                <label for="pid">Product ID</label>
-                                <input type="text" id="pid" name="productid" placeholder="123456789" required />
+                                <label>Product Name</label>
+                                <h4 style="margin-bottom: 20px;"><?= $stmt['name']; ?> ($<?= $stmt['price']; ?>)</h4>
+                                <input type="hidden" id="pid" name="productid" value="<?=$_GET['id'];?>" />
                                 <label for="quantity">Quantity</label>
                                 <select id="quantity" onchange="updatePrice2()">
                                     <option>1</option>
