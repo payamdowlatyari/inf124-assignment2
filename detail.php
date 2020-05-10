@@ -35,7 +35,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
             <div class="content">
                 <h1>Order Form</h1>
                 <div class="orderform">
-                    <form name="contactform" id="contactform" method="post" action="php/insert.php">
+                    <form name="submitform" id="submitform" method="post" action="php/insert.php">
                         <p class="form-message"></p>
                         <div class="row">
                             <div class="col-50">
