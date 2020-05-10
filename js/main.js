@@ -73,6 +73,18 @@ function updatePrice() {
   total = quantity * price;
 }
 
+function showHide() {
+  var checkbox = document.getElementById('sameaddr');
+  var hidden = document.getElementsByClassName('hidden');
+
+  for (var i = 0; i < hidden.length; i++) {
+    if (checkbox.checked)
+      hidden[i].style.display = "none";
+    else
+      hidden[i].style.display = "block";
+  }
+}
+
 // form validation
 $(document).ready(function () {
   $("#orderform").submit(function (event) {

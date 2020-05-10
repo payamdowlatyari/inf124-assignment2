@@ -60,7 +60,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                 <div class="row">
                                     <div class="col-50">
                                         <label for="state">State</label>
-                                        <input type="text" id="state" name="state" placeholder="NY" required />
+                                        <input type="text" id="state" name="state" placeholder="New York" required />
                                         <div id="stateList"></div>
                                     </div>
                                     <div class="col-50">
@@ -68,13 +68,28 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                         <input type="text" id="zip" name="zip" placeholder="10001" required />
                                     </div>
                                 </div>
-                                <br>
-                                <label for="method">Shipping method</label>
-                                <select id="method" name="method">
-                                    <option>Overnight ($11.00)</option>
-                                    <option selected>2-day expedited ($9.50)</option>
-                                    <option>7-day ground ($6.25)</option>
-                                </select>
+                                <label>
+                                        <input type="checkbox" checked="checked" id="sameaddr" name="sameaddr" onclick="showHide()" />
+                                        Billing address same as shipping
+                                </label>
+                                <h3 class="hidden">Billing Address</h3>
+                                <br class="hidden"/>
+                                <label  for="billaddr" class="hidden" style="display: none">Address</label>
+                                <input type="text" id="billaddr" name="billaddr" placeholder="542 W. 15th Street" class="hidden"/>
+                                <label for="billcity" class="hidden" style="display: none">City</label>
+                                <input type="text" id="billcity" name="billcity" placeholder="New York" class="hidden"/>
+                                <div class="row">
+                                    <div class="col-50">
+                                        <label for="billstate" class="hidden" style="display: none">State</label>
+                                        <input type="text" id="billstate" name="billstate" placeholder="New York" class="hidden"/>
+                                        <div id="stateList"></div>
+                                    </div>
+                                    <div class="col-50">
+                                        <label for="billzip" class="hidden" style="display: none">Zip</label>
+                                        <input type="text" id="billzip" name="billzip" placeholder="10001" class="hidden"/>
+                                    </div>
+                                </div>
+                                <br />                   
                             </div>
 
                             <div class="col-50">
@@ -83,6 +98,12 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                 <label>Product Name</label>
                                 <h4 style="margin-bottom: 20px;"><?= $stmt['name']; ?> ($<?= $stmt['price']; ?>)</h4>
                                 <input type="hidden" id="pid" name="productid" value="<?=$_GET['id'];?>" />
+                                <label for="method">Shipping method</label>
+                                <select id="method" name="method">
+                                    <option>Overnight ($11.00)</option>
+                                    <option selected>2-day expedited ($9.50)</option>
+                                    <option>7-day ground ($6.25)</option>
+                                </select>
                                 <label for="quantity">Quantity</label>
                                 <select id="quantity" onchange="updatePrice2()">
                                     <option>1</option>
@@ -123,10 +144,6 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                         <label for="cvv">CVV</label>
                                         <input type="text" id="cvv" name="cvv" placeholder="352" required />
                                     </div>
-                                    <label>
-                                        <input type="checkbox" checked="checked" name="sameadr" />
-                                        Billing address same as shipping
-                                    </label>
                                     <br /><br />
                                 </div>
                                 <div id="price-table">
@@ -137,7 +154,7 @@ $stmt = $pdo->query("SELECT * FROM products WHERE `id` = '{$_GET['id']}'")->fetc
                                     <div>Total Tax: </div>
                                     <div class="price-item">+ $<span id="tax-amount"></span></div>
                                     <div>
-                                        <div>Shiping: </div>
+                                        <div>Shipping: </div>
                                         <div class="price-item">+ $<span id="shipping"></span></div>
                                     </div>
 

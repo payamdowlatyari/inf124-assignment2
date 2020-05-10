@@ -35,10 +35,10 @@
 
     
 
-    if (isset($_POST['sameadr']))
-        $sameadr = 1;
+    if (isset($_POST['sameaddr']))
+        $sameaddr = 1;
     else
-        $sameadr = 0;
+        $sameaddr = 0;
 
     if($errorEmpty == false && $errorEmail == false){    
         $randomOrderID = rand();

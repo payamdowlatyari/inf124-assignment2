@@ -29,6 +29,9 @@ a {
 	color: #fff;
 	padding: 28px 20px;
 }
+.hidden {
+	display: none;
+}
 .navbar {
 	border-top: 3px solid #d10024;
 	border-bottom: 3px solid #e4e7ed;
