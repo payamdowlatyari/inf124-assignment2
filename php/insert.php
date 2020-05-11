@@ -1,37 +1,79 @@
 <?php
     require_once "dbconnect.php";
 
-    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['phone'])
-        && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zip'])
-        && isset($_POST['billaddr']) && isset($_POST['billcity']) && isset($_POST['billstate']) && isset($_POST['billzip'])
-        && isset($_POST['method']) && isset($_POST['productid']) && isset($_POST['quantity']) && isset($_POST['cardname'])
-        && isset($_POST['cardnumber']) && isset($_POST['expmonth']) && isset($_POST['expyear']) && isset($_POST['cvv'])) { 
+    $error = false;
 
-        $sql = "INSERT INTO orders (
-            id, firstname, lastname, email, phone, 
-            address, city, state, zip, 
-            billaddr, billcity, billstate, billzip, 
-            method, productid, quantity, 
-            cardname, cardnumber, expmonth, expyear, cvv)
-        VALUES (:orderID, :firstname, :lastname, :email, :phone, 
-                :address, :city, :state, :zip, 
-                :billaddr, :billcity, :billstate, :billzip,
-                :method, :productid, :quantity,
-                :cardname, :cardnumber, :expmonth, :expyear, :cvv)";
-        
-        // determine billing address
-        if (isset($_POST['sameaddr'])) {
-            $billaddr = &$_POST['address'];
-            $billcity = &$_POST['city'];
-            $billstate = &$_POST['state'];
-            $billzip = &$_POST['zip'];
-        }
-        else {
-            $billaddr = $_POST['billaddr'];;
-            $billcity = $_POST['billcity'];;
-            $billstate = $_POST['billstate'];;
-            $billzip = $_POST['billzip'];
-        }
+    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+        echo "<span style='color: red;'>Invalid Email!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['phone']) || (is_numeric($_POST['phone']) && strlen((string)$_POST['phone']) != 10)) {
+        echo "<span style='color: red'>Invalid Phone Number!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['zip']) || (is_numeric($_POST['zip']) && strlen((string)$_POST['phone']) != 5)) {
+        echo "<span style='color: red'>Invalid Zip Code!!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['quantity'])) {
+        echo "<span style='color: red'>Invalid Quantity!!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['productid'])) {
+        echo "<span style='color: red'>Invalid Product ID!!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['expmonth']) ) {
+        echo "<span style='color: red'>Invalid Expiring Month!!</span><br/>";
+    }
+
+    if(!is_numeric($_POST['expyear']) ) {
+        echo "<span style='color: red'>Invalid Expiring Year</span><br/>";
+    }
+
+    if(!is_numeric($_POST['cvv']) ) {
+        echo "<span style='color: red'>Invalid CVV Number!!</span><br/>";
+    }
+
+    if(!luhn_check($_POST['cvv']) ) {
+        echo "<span style='color: red'>Invalid CVV Number!!</span><br/>";
+    }
+
+    $sql = "INSERT INTO orders (
+        id, firstname, lastname, email, phone, 
+        address, city, state, zip, 
+        billaddr, billcity, billstate, billzip, 
+        method, productid, quantity, 
+        cardname, cardnumber, expmonth, expyear, cvv)
+    VALUES (:orderID, :firstname, :lastname, :email, :phone, 
+            :address, :city, :state, :zip, 
+            :billaddr, :billcity, :billstate, :billzip,
+            :method, :productid, :quantity,
+            :cardname, :cardnumber, :expmonth, :expyear, :cvv)";
+    
+    // determine billing address
+    if (isset($_POST['sameaddr'])) {
+        $billaddr = &$_POST['address'];
+        $billcity = &$_POST['city'];
+        $billstate = &$_POST['state'];
+        $billzip = &$_POST['zip'];
+
+        $stmt = $pdo->prepare($sql); 
+        $stmt->execute(array( 
+            ':orderID' => rand(), ':firstname' => $_POST['firstname'], ':lastname' => $_POST['lastname'], 
+            ':email' => $_POST['email'], ':phone' => $_POST['phone'], ':address' => $_POST['address'], 
+            ':city' => $_POST['city'], ':state' => $_POST['state'], ':zip' => $_POST['zip'], 
+            ':billaddr' => '', ':billcity' => '', ':billstate' => '', ':billzip' => '', 
+            ':method' => $_POST['method'], ':productid' => $_POST['productid'], ':quantity' => $_POST['quantity'], 
+            ':cardname' => $_POST['cardname'], ':cardnumber' => $_POST['cardnumber'], 
+            ':expmonth' => number_format($_POST['expmonth']), ':expyear' => $_POST['expyear'], ':cvv' => $_POST['cvv']));
+    }
+    else if (isset($_POST['billaddr'])) {
+        $billaddr = $_POST['billaddr'];;
+        $billcity = $_POST['billcity'];;
+        $billstate = $_POST['billstate'];;
+        $billzip = $_POST['billzip'];
+    
 
         $stmt = $pdo->prepare($sql); 
         $stmt->execute(array( 
@@ -43,7 +85,6 @@
             ':cardname' => $_POST['cardname'], ':cardnumber' => $_POST['cardnumber'], 
             ':expmonth' => number_format($_POST['expmonth']), ':expyear' => $_POST['expyear'], ':cvv' => $_POST['cvv']));
     }
-
     // set values to insert
     /*if(isset($_POST['firstname'])){
         $firstname = $_POST['firstname'];
@@ -105,11 +146,41 @@
 
         $pdo->exec($sql);
     }*/
+    //Luhn Algorithm created by Hans Peter Luhn to validate credit card numbers
+    //Translated to PHP by Ray Hayes on StackOverflow: https://stackoverflow.com/a/174750
+    function luhn_check($number) {
+
+        // Strip any non-digits (useful for credit card numbers with spaces and hyphens)
+        $number=preg_replace('/\D/', '', $number);
+      
+        // Set the string length and parity
+        $number_length=strlen($number);
+        $parity=$number_length % 2;
+      
+        // Loop through each digit and do the maths
+        $total=0;
+        for ($i=0; $i<$number_length; $i++) {
+          $digit=$number[$i];
+          // Multiply alternate digits by two
+          if ($i % 2 == $parity) {
+            $digit*=2;
+            // If the sum is two digits, add them together (in effect)
+            if ($digit > 9) {
+              $digit-=9;
+            }
+          }
+          // Total up the digits
+          $total+=$digit;
+        }
+      
+        // If the total mod 10 equals 0, the number is valid
+        return ($total % 10 == 0) ? TRUE : FALSE;
+      
+      }
 ?>
-<!--<script>
-    var empty = "<?php // echo $errorEmpty;?>";
-    var email = "<?php // echo $errorEmail;?>";
-    if(empty == false && email== false){
+<script>
+    var error = "<?php  echo $error;?>";
+    if(error == false){
         window.location.href = "./orderConfirmation.php?orderid=" + <?php // echo $randomOrderID;?>
     }
-</script>-->
+</script>
