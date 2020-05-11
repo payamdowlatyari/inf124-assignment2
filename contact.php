@@ -7,8 +7,8 @@
                 <h1>Contact Us</h1>
                 <div class="container">
 
-                        <form name="contactform" method="post" action="mailto:info@sportstore.com" enctype="text/plain">
-                        <label for="fname">First Name</label>
+                      <form name="contactform" method="post" action="mailto:info@sportstore.com" enctype="text/plain">
+                      <label for="fname">First Name</label>
                       <input type="text" id="fname" name="firstname" placeholder="Your name..." required>
 
                       <label for="lname">Last Name</label>
@@ -16,7 +16,6 @@
 
                       <label for="email">E-mail</label>
                       <input type="text" id="email" name="E-mail" placeholder="Your E-mail address..." required>
-
 
                       <label for="subject">Subject</label>
                       <textarea id="subject" name="subject" placeholder="Write something..." style="height:200px"></textarea>

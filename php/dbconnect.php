@@ -1,4 +1,6 @@
 <?php
+    error_reporting( error_reporting() & ~E_NOTICE );
+
     $dsn = "mysql:host=localhost;dbname=ssdb"; // must create db named ssdb
     $username = "root";
     $password = "";
