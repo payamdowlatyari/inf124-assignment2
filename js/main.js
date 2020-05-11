@@ -62,14 +62,13 @@ function sendEmail() {
   document.getElementById("contactform").action = "mailto:info@sportsstore.com";
 }
 
-var quantity = quantityOptions = 1;
+var quantity = 1;
 var price = document.getElementById('unitPrice').innerHTML.substring(1);
 var total = quantity * price;
 
 function updatePrice() {
-  let quantity = document.getElementById('quantity').value;
-  document.getElementsByClassName('output')[0].innerHTML = "$" + Number.parseFloat(quantity * price).toFixed(2);
-  quantityOptions = quantity;
+  quantityOptions = document.getElementById('quantity').value;
+  quantity = quantityOptions;
   total = quantity * price;
 }
 
@@ -197,6 +196,13 @@ $(document).ready(function () {
     $('#shipping').html(shipping.toFixed(2));
     $('#final-price').html(final.toFixed(2))
 
+  })
+
+  // billing address 
+  $('#billing-address').hide();
+
+  $('#same-address').change(function () {
+    $('#billing-address').slideToggle();
   })
 
 });
