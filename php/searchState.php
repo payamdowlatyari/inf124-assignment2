@@ -1,17 +1,27 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "ssdb");
+require_once "dbconnect.php";
+
 if (isset($_POST["query"])) {
-    $output = '';
-    $query = "SELECT * FROM states WHERE name LIKE '%" . $_POST["query"] . "%'";
-    $result = mysqli_query($connect, $query);
-    $output = '<ul class="list-unstyled">';
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {
-            $output .= '<li>' . $row["name"] . '</li>';
+
+    $sql = "SELECT * FROM states WHERE name LIKE '%" . $_POST["query"] . "%'";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $stmt->bindColumn('name', $name);
+
+        while ($row = $stmt->fetch(PDO::FETCH_BOUND)) {
+
+            $data = "<li>" . $name . "</li>\n";
+
+            if (!$stmt->rowCount()) {
+
+                print "Not Found";
+            } else {
+
+                print $data;
+            }
         }
-    } else {
-        $output .= '<li>Not Found</li>';
+    } catch (PDOException $e) {
+        print $e->getMessage();
     }
-    $output .= '</ul>';
-    echo $output;
 }

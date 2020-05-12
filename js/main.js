@@ -118,8 +118,10 @@ $(document).ready(function () {
   });
 
   $(document).mouseover(function () {
+
     $('#total-price').html(total.toFixed(2));
     $('#tax-amount').html((total * taxRate).toFixed(2));
+
     let final = (total + (total * taxRate) + shipping);
     $('#shipping').html(shipping.toFixed(2));
     $('#final-price').html(final.toFixed(2))

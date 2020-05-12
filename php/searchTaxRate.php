@@ -1,13 +1,12 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "ssdb");
+require_once "dbconnect.php";
 if (isset($_POST["query"])) {
     $output = '';
-    $query = "SELECT * FROM tax WHERE zipcode LIKE '%" . $_POST["query"] . "%'";
-    $result = mysqli_query($connect, $query);
-    if (mysqli_num_rows($result) > 0) {
-        if ($row = mysqli_fetch_array($result)) {
-            $output .=  $row["rate"];
-        }
+    $mysql = $pdo->prepare("SELECT * FROM tax WHERE zipcode=:zipcode");
+    $mysql->execute(['zipcode' => $_POST['query']]);
+    $stmt = $mysql->fetch();
+    if (is_array($stmt)) {
+        $output .=  $stmt["rate"];
     } else {
         $output .= '0.000000';
     }
