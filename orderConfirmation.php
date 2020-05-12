@@ -1,5 +1,4 @@
 <?=file_get_contents("components/head.html");?>
-<link href="../style.css" rel="stylesheet">
 <body>
     <?php
         require_once "./php/dbconnect.php";

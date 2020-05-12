@@ -1,12 +1,12 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "ssdb");
+require_once "dbconnect.php";
 if (isset($_POST["query"])) {
     $output = '';
     $query = "SELECT * FROM states WHERE name LIKE '%" . $_POST["query"] . "%'";
-    $result = mysqli_query($connect, $query);
+    $stmt = $pdo->query($query);
     $output = '<ul class="list-unstyled">';
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_array($result)) {
+    if ($stmt->fetchColumn() > 0) {
+        while ($row = $stmt->fetch()) {
             $output .= '<li>' . $row["name"] . '</li>';
         }
     } else {
