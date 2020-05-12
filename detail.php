@@ -39,7 +39,7 @@ $stmt = $mysql->fetch();
                 <h1>Order Form</h1>
                 <div class="orderform">
                     <form name="submitform" id="submitform" method="post" action="detail.php">
-                        <p class="form-message"></p>
+                        <p class="form-message"><?=(isset($errorMessage))?$errorMessage:"";?></p>
                         <div class="row">
                             <div class="col-50">
                                 <h3>Buyer's Information</h3>

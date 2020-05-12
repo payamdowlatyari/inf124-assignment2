@@ -27,11 +27,9 @@
         }
     }
     if(isset($_POST['purchase'])) {
-        $isError = false;
 
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             $error["email"] = "<small style='color: red;'>Invalid Email!</small>";
-            $isError = true;
         }
 
         if(isset($_POST['phone'])) {
@@ -40,7 +38,6 @@
 
         if(!is_numeric($_POST['phone']) || (is_numeric($_POST['phone']) && strlen((string)$_POST['phone']) != 10)) {
             $error["phone"] = "<small style='color: red'>Invalid Phone Number!</small>";
-            $isError = true;
         }
 
         if(isset($_POST['zip'])) {
@@ -49,37 +46,30 @@
 
         if(!is_numeric($_POST['zip'])) {
             $error["zip"] = "<small style='color: red'>Invalid Zip Code!!</small>";
-            $isError = true;
         }
 
         if(!is_numeric($_POST['quantity'])) {
             $error["quantity"] = "<small style='color: red'>Invalid Quantity!!</small>";
-            $isError = true;
         }
 
         if(!is_numeric($_POST['productid'])) {
             $error["productid"] = "<small style='color: red'>Invalid Product ID!!</small>";
-            $isError = true;
         }
 
         if(!is_numeric($_POST['expmonth']) ) {
             $error["expmonth"] = "<small style='color: red'>Invalid Expiring Month!!</small>";
-            $isError = true;
         }
 
-        if(!is_numeric($_POST['expyear']) ) {
+        if(!is_numeric($_POST['expyear']) && $_POST['expyear'] > 2020 && $_POST['expyear'] < 2030) {
             $error["expyear"] = "<small style='color: red'>Invalid Expiring Year</small>";
-            $isError = true;
         }
 
         if(!is_numeric($_POST['cvv']) ) {
             $error["cvv"] = "<small style='color: red'>Invalid CVV Number!!</small>";
-            $isError = true;
         }
 
-        if(!is_numeric($_POST['cardnumber']) || !luhn_check($_POST['cardnumber']) ) {
+        if(!is_numeric($_POST['cardnumber']) && strlen($_POST['cardnumber']) > 10 && strlen($_POST['cardnumber']) < 10) {
             $error["cardnumber"] = "<small style='color: red'>Invalid Card Number!!</small>";
-            $isError = true;
         }
 
         $sql = "INSERT INTO orders (
@@ -94,7 +84,6 @@
                 :method, :productid, :quantity,
                 :cardname, :cardnumber, :expmonth, :expyear, :cvv)";
 
-        $randomOrderID = rand();
         if(isset($_POST['sameaddr']) && isset($_POST['billaddr'])) {
             $billaddr = &$_POST['address'];
             $billcity = &$_POST['city'];
@@ -106,7 +95,8 @@
             $billstate = $_POST['billstate'];;
             $billzip = $_POST['billzip'];
         }
-        if($isError == false) {
+        if(empty($error)) {
+            $randomOrderID = rand();
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
                 ':orderID' => $randomOrderID,
@@ -132,6 +122,8 @@
                 ':cvv' => $_POST['cvv']
             ));
             header("Location: orderConfirmation.php?orderid=".$randomOrderID);
+        } else {
+            $errorMessage = "<p style='color: red'>We can't proccess your purchase right now. please contact support team.</p>";
         }
     }
 ?>
