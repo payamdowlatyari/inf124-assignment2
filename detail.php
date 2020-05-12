@@ -72,7 +72,7 @@ $stmt = $mysql->fetch();
                                     </div>
                                 </div>
                                 <label>
-                                    <input id="same-address" type="checkbox" checked="checked" name="sameadr" />
+                                    <input id="same-address" type="checkbox" checked="checked" name="sameaddr" />
                                     Billing address same as shipping
                                 </label>
                                 <div id="billing-address">
