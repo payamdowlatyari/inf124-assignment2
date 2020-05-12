@@ -49,13 +49,13 @@
             id, firstname, lastname, email, phone,
             address, city, state, zip,
             billaddr, billcity, billstate, billzip,
-            method, productid, quantity,
-            cardname, cardnumber, expmonth, expyear, cvv)
+            method, productid, quantity, cardname, 
+            cardnumber, expmonth, expyear, cvv, price)
         VALUES (:orderID, :firstname, :lastname, :email, :phone,
                 :address, :city, :state, :zip,
                 :billaddr, :billcity, :billstate, :billzip,
-                :method, :productid, :quantity,
-                :cardname, :cardnumber, :expmonth, :expyear, :cvv)";
+                :method, :productid, :quantity, :cardname, 
+                :cardnumber, :expmonth, :expyear, :cvv, :price)";
 
         if(isset($_POST['sameaddr'])) {
             $billaddr = &$_POST['address'];
@@ -92,7 +92,8 @@
                 ':cardnumber' => $_POST['cardnumber'],
                 ':expmonth' => number_format($_POST['expmonth']),
                 ':expyear' => $_POST['expyear'],
-                ':cvv' => $_POST['cvv']
+                ':cvv' => $_POST['cvv'],
+                ':price' => $_POST['totalPrice']
             ));
             header("Location: orderConfirmation.php?orderid=".$randomOrderID);
         } else {

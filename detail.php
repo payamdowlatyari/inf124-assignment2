@@ -169,6 +169,7 @@ $stmt = $mysql->fetch();
                                     <div>
                                         <h4>Final Price</h4>
                                         <div class="price-item">= $<span id="final-price"></span></div>
+                                        <input type="hidden" id="totalPrice" name="totalPrice" value="" />
                                     </div>
                                 </div>
                             </div>

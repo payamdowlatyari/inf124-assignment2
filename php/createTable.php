@@ -22,7 +22,8 @@ require_once "dbconnect.php";
         cardnumber VARCHAR(20) NOT NULL,
         expmonth INT(2) NOT NULL,
         expyear INT(4) NOT NULL,
-        cvv INT(4) NOT NULL
+        cvv INT(4) NOT NULL, 
+        price VARCHAR(10) NOT NULL
     )";
 
 $tables['products'] = "CREATE TABLE products (
