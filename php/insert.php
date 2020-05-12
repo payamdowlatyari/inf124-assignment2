@@ -131,6 +131,7 @@
                 ':expyear' => $_POST['expyear'],
                 ':cvv' => $_POST['cvv']
             ));
+            header("Location: orderConfirmation.php?orderid=".$randomOrderID);
         }
     }
 ?>
