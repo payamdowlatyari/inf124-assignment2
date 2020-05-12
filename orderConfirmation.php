@@ -38,7 +38,7 @@
                         <h2 style="margin-left: 20px;">Product Information</h2><br/>
                         <p style="margin-left: 40px;">Product: <?php echo $productName;?></p>
                         <p style="margin-left: 40px;">Quantity: <?php echo $quantity;?></p>
-                        <p style="margin-left: 40px;">Price per Product: <?php echo $productPrice;?></p>
+                        <p style="margin-left: 40px;">Total Price: $<?php echo $row['price'];?></p>
                         <br/>
                         <h2 style="margin-left: 20px;">Shipping Information</h2><br/>
                         <p style="margin-left: 40px;">Method: <?php echo $row['method'];?></p>
