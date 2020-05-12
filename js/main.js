@@ -125,7 +125,7 @@ $(document).ready(function () {
     let final = (total + (total * taxRate) + shipping);
     $('#shipping').html(shipping.toFixed(2));
     $('#final-price').html(final.toFixed(2))
-
+    $('input[id=totalPrice]').val(final.toFixed(2));
   })
 
   // billing address

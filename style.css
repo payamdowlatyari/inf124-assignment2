@@ -198,6 +198,17 @@ a {
 	margin-bottom: 20px;
 	line-height: 2;
 }
+.main .confirmation h1 {
+	font-size: 25px;
+}
+.main .confirmation h2 {
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.main .confirmation p {
+	padding-left: 40px;
+}
 .footer {
 	background-color: #1e1f29;
 	color: #fff;

@@ -39,7 +39,7 @@ $stmt = $mysql->fetch();
                 <h1>Order Form</h1>
                 <div class="orderform">
                     <form name="submitform" id="submitform" method="post" action="detail.php">
-                        <p class="form-message"></p>
+                        <p class="form-message"><?=(isset($errorMessage))?$errorMessage:"";?></p>
                         <div class="row">
                             <div class="col-50">
                                 <h3>Buyer's Information</h3>
@@ -75,7 +75,7 @@ $stmt = $mysql->fetch();
                                 </div>
                                 <br>
                                 <label>
-                                    <input id="same-address" type="checkbox" checked="checked" name="sameadr" />
+                                    <input id="same-address" type="checkbox" checked="checked" name="sameaddr" />
                                     Billing address same as shipping
                                 </label>
                                 <div id="billing-address">
@@ -172,6 +172,7 @@ $stmt = $mysql->fetch();
                                     <div>
                                         <h4>Final Price</h4>
                                         <div class="price-item">= $<span id="final-price"></span></div>
+                                        <input type="hidden" id="totalPrice" name="totalPrice" value="" />
                                     </div>
                                 </div>
                             </div>
